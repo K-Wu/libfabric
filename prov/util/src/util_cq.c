@@ -234,7 +234,7 @@ ssize_t ofi_cq_readfrom(struct fid_cq *cq_fid, void *buf, size_t count,
 			goto out;
 		}
 	}
-	FI_INFO(cq->domain->prov, FI_LOG_CQ, "ofi_cq_readfrom %zu, %zu\n",count, cq_fid->fid->fclass);
+	FI_INFO(cq->domain->prov, FI_LOG_CQ, "ofi_cq_readfrom %zu, %zu\n",count, cq_fid->fid.fclass);
 	if (count > ofi_cirque_usedcnt(cq->cirq))
 		count = ofi_cirque_usedcnt(cq->cirq);
 
