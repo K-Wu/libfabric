@@ -82,6 +82,14 @@ void fi_log(const struct fi_provider *prov, enum fi_log_level level,
 		}							\
 	} while (0)
 
+#define FI_LOG_ANYWAY(prov, level, subsystem, ...)				\
+do {								\
+		int saved_errno = errno;			\
+		fi_log(prov, level, subsystem,			\
+			__func__, __LINE__, __VA_ARGS__);	\
+		errno = saved_errno;				\
+} while (0)
+
 #define FI_WARN(prov, subsystem, ...)					\
 	FI_LOG(prov, FI_LOG_WARN, subsystem, __VA_ARGS__)
 
